@@ -1,17 +1,20 @@
-var dest = "./.build";
+var dest = './.build';
 var app = './app';
-var node_modules = './node_modules';
-var bower_components = './bower_components';
+var nodeModules = './node_modules';
+var bowerComponents = './bower_components';
+
+var _ = require('lodash');
 
 var url = require('url');
 var proxy = require('proxy-middleware');
 
-var ftpConfig = require('./.ftppass');
+var ftpInfo = null;
+try { ftpInfo = require('./.ftppass'); } catch (e) { } 
 
 var proxyOptions = url.parse('http://www.adultswim.com/_default');
 proxyOptions.route = '/_default';
 
-module.exports = {
+var config = {
     browserSync: {
         server: {
             middleware: [proxy(proxyOptions)],
@@ -27,8 +30,8 @@ module.exports = {
         settings: {
             paths: [
                 app + '/styles/',
-                node_modules + '/',
-                bower_components + '/'
+                nodeModules + '/',
+                bowerComponents + '/'
             ]
         }
     },
@@ -39,7 +42,7 @@ module.exports = {
     fonts: {
         src: [
             app + "/fonts/**",
-            node_modules + '/font-awesome/fonts/**' //add paths to other libraries if you add them
+            nodeModules + '/font-awesome/fonts/**' //add paths to other libraries if you add them
         ],
         dest: dest + "/fonts"
     },
@@ -68,23 +71,38 @@ module.exports = {
     },
     deploy: {
         src: dest + '/**',
-        dev: {
-            host: ftpConfig.dev.host,
-            user: ftpConfig.dev.username,
-            pass: ftpConfig.dev.password,
-            remotePath: '/dev/site'
-        },
-        staging: {
-            host: ftpConfig.staging.host,
-            user: ftpConfig.staging.username,
-            key: ftpConfig.staging.keyLocation,
-            remotePath: '/dev/site'
-        },
-        production: {
-            host: ftpConfig.production.host,
-            user: ftpConfig.production.username,
-            key: ftpConfig.production.keyLocation,
-            remotePath: '/dev/site'
-        }
+        dev: {},
+        staging: {},
+        production: {}
     }
 };
+
+if (ftpInfo) {
+    var ftpConfig = {
+        deploy: {
+            src: dest + '/**',
+            dev: {
+                host: ftpConfig.dev.host,
+                user: ftpConfig.dev.username,
+                pass: ftpConfig.dev.password,
+                remotePath: '/dev/site'
+            },
+            staging: {
+                host: ftpConfig.staging.host,
+                user: ftpConfig.staging.username,
+                key: ftpConfig.staging.keyLocation,
+                remotePath: '/dev/site'
+            },
+            production: {
+                host: ftpConfig.production.host,
+                user: ftpConfig.production.username,
+                key: ftpConfig.production.keyLocation,
+                remotePath: '/dev/site'
+            }
+        }
+    };
+
+    config = _.extend({}, config, ftpConfig);
+}
+
+module.exports = config;
