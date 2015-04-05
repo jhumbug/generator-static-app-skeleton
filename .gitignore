@@ -1,0 +1,9 @@
+node_modules
+bower_components
+.build
+.ftppass
+npm-debug.log
+
+test/temp
+test/bower_components/
+test

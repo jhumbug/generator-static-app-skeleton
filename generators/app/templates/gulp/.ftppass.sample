@@ -1,0 +1,17 @@
+module.exports = {
+	"dev": {
+		"host": "hostname.com",
+		"username": "devuser",
+		"password": "devpass"
+	},
+	"staging": {
+		"host": "hostname.com",
+		"username": "staginguser",
+		"keyLocation": "/Users/Leeeeeeeroooooy/.ssh/stagingkey"
+	},
+	"production": {
+		"host": "hostname.com",
+		"username": "productionuser",
+		"keyLocation": "/Users/Leeeeeeeroooooy/.ssh/prodkey"
+	}
+}

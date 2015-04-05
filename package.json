@@ -1,0 +1,19 @@
+{
+  "name": "generator-static-app-skeleton",
+  "version": "0.0.1",
+  "description": "Static App Skeleton with gulp + browserify + less + backbone + bootstrap",
+  "main": "app.js",
+  "files": [
+    "app"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jhumbug/generator-static-app-skeleton.git"
+  },
+  "author": "Justin Gardner",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "yeoman-generator": "^0.18.10"
+  }
+}
