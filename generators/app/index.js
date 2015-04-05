@@ -6,40 +6,36 @@ module.exports = generators.Base.extend({
 	//     method2: function () {}
 	// }
 
-  // The name `constructor` is important here
-  constructor: function () {
-	// Calling the super constructor is important so our generator is correctly set up
-	generators.Base.apply(this, arguments);
+	// paths: function () {
+		// this.destinationRoot();
+		// returns '~/projects'
 
-	// Next, add your custom code
-	this.option('coffee'); // This method adds support for a `--coffee` flag
-	// And you can then access it later on this way; e.g.
-    this.scriptSuffix = (this.options.coffee ? ".coffee": ".js");
+		// this.destinationPath('index.js');
+		// returns '~/projects/index.js'
 
-	// This makes `appname` a required argument.
-    this.argument('appname', { type: String, required: true });
-    // And you can then access it later on this way; e.g. CamelCased
-    this.typedAppName = this.appname;
-    this.appname = this._.camelize(this.appname);
+		// this.sourceRoot()
+		// returns './templates'
 
-      
-  },
+		// this.templatePath('index.js');
+		// returns './templates/index.js'
+	// },
 
-  paths: function () {
-    this.destinationRoot();
-    // returns '~/projects'
+	// The name `constructor` is important here
+	constructor: function () {
+		// Calling the super constructor is important so our generator is correctly set up
+		generators.Base.apply(this, arguments);
 
-    this.destinationPath('index.js');
-    // returns '~/projects/index.js'
+		// Next, add your custom code
+		// this.option('coffee'); // This method adds support for a `--coffee` flag
+		// And you can then access it later on this way; e.g.
+		// this.scriptSuffix = (this.options.coffee ? ".coffee": ".js");
 
-    this.sourceRoot();
-    // returns './templates'
-
-    this.templatePath('index.js');
-    // returns './templates/index.js'
-  },
-
-  	
+		// This makes `appname` a required argument.
+		// this.argument('appname', { type: String, required: true });
+		// And you can then access it later on this way; e.g. CamelCased
+		this.typedAppName = this.appname;
+		this.appname = this._.camelize(this.appname);
+	},
 
   	initializing: {
   		init: function () {
@@ -62,7 +58,8 @@ module.exports = generators.Base.extend({
 						type    : 'input',
 						name    : 'name',
 						message : 'Your project name',
-						default : this.appname // Default to current folder name
+						default : this.appname, // Default to current folder name
+						store 	: true
 				    },
 				    {
 				        type    : 'input',
@@ -123,11 +120,14 @@ module.exports = generators.Base.extend({
 	writing: {
 	  	copy: function () {
 			this.template('./bower.json', './bower.json');
+			this.template('./.bowerrc', './.bowerrc');
+			this.template('./.gitignore', './.gitignore');
+			this.template('./package.json', './package.json');
+			this.template('./gulpfile.js', './gulpfile.js');
+			this.template('./README.md', './README.md');
 
-			this.directory('./gulp', './gulp', this._.bind(function () {
-				this.log('hello');
-			}, this));
-
+			this.directory('./gulp', './gulp');
+			this.directory('./app', './app');
 	  	}
 	},
 

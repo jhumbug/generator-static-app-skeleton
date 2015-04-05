@@ -6,6 +6,7 @@
   "files": [
     "app"
   ],
+  "keywords": ["yeoman-generator"],
   "repository": {
     "type": "git",
     "url": "git@github.com:jhumbug/generator-static-app-skeleton.git"
