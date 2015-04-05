@@ -1,4 +1,4 @@
-# Static App Skeleton
+# Yeoman Generator for a Static App Skeleton
 
 ## Overview
 This skeleton is for creating and deploying a one page static html/js/css app.  It uses a bunch web technologies to help workflow, organization and rapid development.
@@ -13,9 +13,11 @@ It uses:
 ## Installation and Prerequisites
 You'll need a few things to be able to run this.  First being node and npm.  Go here to start that whole process: https://nodejs.org/
 
-Next you'll want to get gulp set up globally. `npm install --global gulp`
+Next you'll want to install yeoman globally. `npm install yo -g`
 
-Now it's time to install.  First clone the repo.  How could you forget that?
+Then you'll want to actually get this generator. `npm install -g generator-static-app-skeleton`
+
+Then you'll want to get gulp set up globally. `npm install -g gulp`
 
 Next run `npm install`.
 
