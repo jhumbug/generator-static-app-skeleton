@@ -1,6 +1,6 @@
 {
   "name": "generator-static-app-skeleton",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Static App Skeleton with gulp + browserify + less + backbone + bootstrap",
   "main": "app.js",
   "files": [

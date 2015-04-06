@@ -1,7 +1,7 @@
 # Yeoman Generator for a Static App Skeleton
 
 ## Overview
-This skeleton is for creating and deploying a one page static html/js/css app.  It uses a bunch web technologies to help workflow, organization and rapid development.
+This yeoman generator provides you with a static app skeleton for creating and deploying a one page static html/js/css app.  It uses a bunch web technologies to help workflow, organization and rapid development.
 
 It uses:
 * [Backbone](http://backbonejs.org/) as it's MVC.
@@ -10,33 +10,30 @@ It uses:
 * [Browserify](http://browserify.org/) as it's dependency manager.
 * And several packages come pre-installed to help out with things (Bootstrap, jQuery, lodash, BrowserSync, Font Awesome and more)
 
-## Installation and Prerequisites
-You'll need a few things to be able to run this.  First being node and npm.  Go here to start that whole process: https://nodejs.org/
+## Prerequisites
+First, make sure you have [yeoman](http://yeoman.io/) installed globally. `npm install yo -g`
 
-Next you'll want to install yeoman globally. `npm install yo -g`
+Once you have that you can install this generator. `npm install -g generator-static-app-skeleton`
 
-Then you'll want to actually get this generator. `npm install -g generator-static-app-skeleton`
+One major thing this repo uses is gulp. You'll need to set that up globally. `npm install -g gulp`
 
-Then you'll want to get gulp set up globally. `npm install -g gulp`
+## Generating Your App
+Create your project directory and cd into it: `mkdir test2 && cd test2`
 
-Next run `npm install`.
+And run `yo static-app-skeleton`. 
 
-You're done!
+You'll get a few prompts about customizing your app -- name, libraries to download, etc.
 
-Oh yeh, optionally, I've stubbed in a blank bower.json file if you want to also use that to load front-end dependencies that aren't in npm's registry. Go install [Bower](http://bower.io/) if you haven't already.
+## Using Your App
+There's a little bit of setup left to do before you can do everything you might need to.
 
-## Setup
+#### FTP Deployment
+To enable ftp deployment to remote servers, go into the gulp folder and copy and rename **.ftppass.sample** to **.ftppass** and change the values to whatever your ftp information is.  It can handle both passwords and ssh keys for sftp.  This is so you can deploy to dev, ref/staging/ and production sites.  Use any or all of them.
 
-Okay, you're not really done.  There's some setup to do before gulp will let you proceed without errors.
+#### Serving Your App and Listening for Changes
+Run `gulp` to compile all the less, js and copies the images, fonts, and markup into a .build folder for serving using BrowserSync.  This will also watch for changes and reload or inject css when a file is saved.
 
-1. First go into the gulp folder and copy and rename **.ftppass.sample** to **.ftppass** and change the values to whatever your ftp information is.  It can handle both passwords and ssh keys for sftp.  This is so you can deploy to dev, ref/staging/ and production sites.  Use any or all of them.
-
-2. Next, run `gulp`. This compiles all the less, js and copies the images, fonts, and markup into a .build folder for serving using BrowserSync.  It also watches for changes and will reload and inject css as needed.
-
-3. The app technically works fine now, but you'll probably want to go in and rename some things to suit your purposes.  I've named everything you'll want to rename to **_default** so you can easily do a search inside the projects files for it a mass renaming.
-
-## More Gulp Commands
-
+#### More Gulp Commands
 `gulp watch` starts watching your project for changes so it can compile and show your changes in a browser right away.
 
 `gulp dev` compiles everything and deploys to your dev site defined in .ftppass
