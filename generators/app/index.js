@@ -1,4 +1,6 @@
 var generators = require('yeoman-generator');
+var slugify = require("underscore.string/slugify");
+var humanize = require("underscore.string/humanize");
 
 module.exports = generators.Base.extend({
 	// priorityName: {
@@ -34,7 +36,8 @@ module.exports = generators.Base.extend({
 		// this.argument('appname', { type: String, required: true });
 		// And you can then access it later on this way; e.g. CamelCased
 		this.typedAppName = this.appname;
-		this.appname = this._.camelize(this.appname);
+		this.humanAppname = humanize(this.appname);
+		this.sluggedAppname = slugify(this.appname);
 	},
 
   	initializing: {
@@ -128,6 +131,17 @@ module.exports = generators.Base.extend({
 
 			this.directory('./gulp', './gulp');
 			this.directory('./app', './app');
+	  	},
+
+	  	templates: function () {
+	  		this.template('./app/index.html', './app/index.html',
+		      	{ appname: this.humanAppname }
+		    );
+
+		    this.template('./app/styles/_default.less', './app/styles/' + this.sluggedAppname + '.less');
+		    this.template('./app/styles/app.less', './app/styles/app.less',
+		      	{ appname: this.sluggedAppname }
+		    );
 	  	}
 	},
 
@@ -144,9 +158,13 @@ module.exports = generators.Base.extend({
 	  	// installingLodash: function() {
 	   //  	this.npmInstall(['lodash'], { 'saveDev': true });
 	  	// }	
-	}
+	},
   
-
+	end: {
+		bye: function () {
+			this.log('You\'ve got an app!')
+		}
+	}
 
 });
 

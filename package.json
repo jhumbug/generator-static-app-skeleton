@@ -6,7 +6,9 @@
   "files": [
     "app"
   ],
-  "keywords": ["yeoman-generator"],
+  "keywords": [
+    "yeoman-generator"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:jhumbug/generator-static-app-skeleton.git"
@@ -15,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
+    "underscore.string": "^3.0.3",
     "yeoman-generator": "^0.18.10"
   }
 }
