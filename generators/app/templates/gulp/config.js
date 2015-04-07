@@ -11,8 +11,8 @@ var proxy = require('proxy-middleware');
 var ftpInfo = null;
 try { ftpInfo = require('./.ftppass'); } catch (e) { } 
 
-var proxyOptions = url.parse('http://www.adultswim.com/_default');
-proxyOptions.route = '/_default';
+var proxyOptions = url.parse('http://www.adultswim.com/<%= sluggedAppname %>');
+proxyOptions.route = '/<%= sluggedAppname %>';
 
 var config = {
     browserSync: {

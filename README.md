@@ -28,12 +28,15 @@ You'll get a few prompts about customizing your app -- name, libraries to downlo
 There's a little bit of setup left to do before you can do everything you might need to.
 
 #### FTP Deployment
+
 To enable ftp deployment to remote servers, go into the gulp folder and copy and rename **.ftppass.sample** to **.ftppass** and change the values to whatever your ftp information is.  It can handle both passwords and ssh keys for sftp.  This is so you can deploy to dev, ref/staging/ and production sites.  Use any or all of them.
 
 #### Serving Your App and Listening for Changes
+
 Run `gulp` to compile all the less, js and copies the images, fonts, and markup into a .build folder for serving using BrowserSync.  This will also watch for changes and reload or inject css when a file is saved.
 
 #### More Gulp Commands
+
 `gulp watch` starts watching your project for changes so it can compile and show your changes in a browser right away.
 
 `gulp dev` compiles everything and deploys to your dev site defined in .ftppass

@@ -1,6 +1,7 @@
 var generators = require('yeoman-generator');
 var slugify = require("underscore.string/slugify");
 var humanize = require("underscore.string/humanize");
+var camelize = require("underscore.string/camelize");
 
 module.exports = generators.Base.extend({
 	// priorityName: {
@@ -35,9 +36,6 @@ module.exports = generators.Base.extend({
 		// This makes `appname` a required argument.
 		// this.argument('appname', { type: String, required: true });
 		// And you can then access it later on this way; e.g. CamelCased
-		this.typedAppName = this.appname;
-		this.humanAppname = humanize(this.appname);
-		this.sluggedAppname = slugify(this.appname);
 	},
 
   	initializing: {
@@ -61,8 +59,7 @@ module.exports = generators.Base.extend({
 						type    : 'input',
 						name    : 'name',
 						message : 'Your project name',
-						default : this.appname, // Default to current folder name
-						store 	: true
+						default : 'Super Terrific Happy App' // Default to current folder name
 				    },
 				    {
 				        type    : 'input',
@@ -93,6 +90,7 @@ module.exports = generators.Base.extend({
 
 
 			    this.prompt(prompts, function (answers) {
+			    	this.appname = answers.name;
 			    	this.log('You\'ve named your app: ' + answers.name);
 					//strip whitespace and break into array
 					this.extraNpmModules.dev = answers.devNpm.replace(/ /g,'').split(',');
@@ -107,7 +105,15 @@ module.exports = generators.Base.extend({
 					done();
 			    }.bind(this));
 			};
+
+		  	this.changeAppName = function (name) {
+		  		this.typedAppName = this.appname; // This has to work App
+				this.humanAppname = humanize(this.appname); // This has to work app
+				this.sluggedAppname = slugify(this.appname); // this-has-to-work-app
+				this.camelCasedAppname = camelize(this.appname.toLowerCase()); //thisHasToWorkApp
+		  	};
 	  	}
+
   	},
 
   	prompting: {
@@ -117,7 +123,9 @@ module.exports = generators.Base.extend({
 	},
 
 	configuring: {
-
+		setInitialState: function () {
+			this.changeAppName(this.appname);
+		}
 	},
 
 	writing: {
@@ -128,19 +136,42 @@ module.exports = generators.Base.extend({
 			this.template('./package.json', './package.json');
 			this.template('./gulpfile.js', './gulpfile.js');
 			this.template('./README.md', './README.md');
-
-			this.directory('./gulp', './gulp');
-			this.directory('./app', './app');
 	  	},
 
 	  	templates: function () {
+	  		//gulp
+			this.directory('./gulp', './gulp');
+	  		this.template('./gulp/config.js', './gulp/config.js',
+		      	{ sluggedAppname: this.sluggedAppname }
+		    );
+
+	  		//markup
 	  		this.template('./app/index.html', './app/index.html',
 		      	{ appname: this.humanAppname }
 		    );
 
+	  		//styles
 		    this.template('./app/styles/_default.less', './app/styles/' + this.sluggedAppname + '.less');
 		    this.template('./app/styles/app.less', './app/styles/app.less',
-		      	{ appname: this.sluggedAppname }
+		      	{ sluggedAppname: this.sluggedAppname }
+		    );
+
+		    //scripts
+		    this.template('./app/scripts/router.js', './app/scripts/router.js',
+		      	{ sluggedAppname: this.sluggedAppname,
+		      	camelCasedAppname: this.camelCasedAppname }
+		    );
+		    this.template('./app/scripts/views/content.js', './app/scripts/views/content.js',
+		      	{ sluggedAppname: this.sluggedAppname,
+		      	camelCasedAppname: this.camelCasedAppname }
+		    );
+		    this.template('./app/scripts/views/_default.js', './app/scripts/views/' + this.sluggedAppname + '.js');
+		    this.template('./app/scripts/templates/_default.ejs', './app/scripts/templates/' + this.sluggedAppname + '.ejs',
+		      	{ camelCasedAppname: this.camelCasedAppname }
+		    );
+		    this.template('./app/scripts/models/_default.js', './app/scripts/models/' + this.sluggedAppname + '.js');
+		    this.template('./app/scripts/lib/_default.js', './app/scripts/lib/' + this.sluggedAppname + '.js',
+		      	{ camelCasedAppname: this.camelCasedAppname }
 		    );
 	  	}
 	},

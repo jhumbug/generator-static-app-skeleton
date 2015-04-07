@@ -2,13 +2,13 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 
-var _defaultView = require('./views/_default');
-var _defaultModel = require('./models/_default');
+var <%= camelCasedAppname %>View = require('./views/<%= sluggedAppname %>');
+var <%= camelCasedAppname %>Model = require('./models/<%= sluggedAppname %>');
 
 module.exports = Backbone.Router.extend({
 
     routes: {
-        ''                		: 'index'
+        '' : 'index'
     },
 
 

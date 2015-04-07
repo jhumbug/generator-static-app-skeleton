@@ -4,21 +4,21 @@ var $ = require('jquery');
 var _ = require('lodash');
 var key = require('keymaster');
 
-$._default = require('../lib/_default');
+$.<%= camelCasedAppname %> = require('../lib/<%= sluggedAppname %>');
 
 module.exports = Backbone.View.extend({
-	el: "#_default",
+	el: "#<%= camelCasedAppname %>",
     
-	template: require('../templates/_default'),
+	template: require('../templates/<%= sluggedAppname %>'),
 
     initialize: function() {
         var self = this;
 
-        this.listenTo(this.model, 'change:_default', this.render); 
+        this.listenTo(this.model, 'change:<%= sluggedAppname %>', this.render); 
 
-        _.bindAll(this, '_default');
+        _.bindAll(this, '<%= camelCasedAppname %>');
 
-        key('enter', 'app', _.bind(this._default, this));
+        key('enter', 'app', _.bind(this.<%= camelCasedAppname %>, this));
 
     },
 
@@ -30,7 +30,7 @@ module.exports = Backbone.View.extend({
         return this;
     },
 
-    _default: function () {
+    <%= camelCasedAppname %>: function () {
        
     }
 });

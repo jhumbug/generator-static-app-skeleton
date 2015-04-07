@@ -1,5 +1,5 @@
 var $ = require('jquery');
 
-$.fn._default = function () {
+$.fn.<%= camelCasedAppname %> = function () {
     
 }
