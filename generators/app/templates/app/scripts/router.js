@@ -30,7 +30,7 @@ module.exports = Backbone.Router.extend({
 
     // # (/)
     index: function () {
-        this.trigger('router:showView', new _defaultView({ model: new _defaultModel() }));
+        this.trigger('router:showView', new <%= camelCasedAppname %>View({ model: new <%= camelCasedAppname %>Model() }));
     }
 
 });

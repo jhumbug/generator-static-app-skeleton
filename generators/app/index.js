@@ -111,6 +111,13 @@ module.exports = generators.Base.extend({
 				this.humanAppname = humanize(this.appname); // This has to work app
 				this.sluggedAppname = slugify(this.appname); // this-has-to-work-app
 				this.camelCasedAppname = camelize(this.appname.toLowerCase()); //thisHasToWorkApp
+
+				this.allNames = {
+					typedAppName: this.typedAppName,
+					humanAppname: this.humanAppname,
+					sluggedAppname: this.sluggedAppname,
+					camelCasedAppname: this.camelCasedAppname
+				};
 		  	};
 	  	}
 
@@ -139,39 +146,44 @@ module.exports = generators.Base.extend({
 	  	},
 
 	  	templates: function () {
+
 	  		//gulp
 			this.directory('./gulp', './gulp');
 	  		this.template('./gulp/config.js', './gulp/config.js',
-		      	{ sluggedAppname: this.sluggedAppname }
+		      	this.allNames
 		    );
 
 	  		//markup
 	  		this.template('./app/index.html', './app/index.html',
-		      	{ appname: this.humanAppname }
+		      	this.allNames
 		    );
 
 	  		//styles
 		    this.template('./app/styles/_default.less', './app/styles/' + this.sluggedAppname + '.less');
 		    this.template('./app/styles/app.less', './app/styles/app.less',
-		      	{ sluggedAppname: this.sluggedAppname }
+		      	this.allNames
 		    );
+		    this.copy('./app/styles/vars.less', './app/styles/vars.less');
+		    this.copy('./app/styles/mixins.less', './app/styles/mixins.less');
 
 		    //scripts
 		    this.template('./app/scripts/router.js', './app/scripts/router.js',
-		      	{ sluggedAppname: this.sluggedAppname,
-		      	camelCasedAppname: this.camelCasedAppname }
+		      	this.allNames
 		    );
+		    this.copy('./app/scripts/app.js', './app/scripts/app.js');
 		    this.template('./app/scripts/views/content.js', './app/scripts/views/content.js',
-		      	{ sluggedAppname: this.sluggedAppname,
-		      	camelCasedAppname: this.camelCasedAppname }
+		      	this.allNames
 		    );
 		    this.template('./app/scripts/views/_default.js', './app/scripts/views/' + this.sluggedAppname + '.js');
 		    this.template('./app/scripts/templates/_default.ejs', './app/scripts/templates/' + this.sluggedAppname + '.ejs',
-		      	{ camelCasedAppname: this.camelCasedAppname }
+		      	this.allNames
+		    );
+		    this.template('./app/scripts/templates/content.ejs', './app/scripts/templates/content.ejs',
+		      	this.allNames
 		    );
 		    this.template('./app/scripts/models/_default.js', './app/scripts/models/' + this.sluggedAppname + '.js');
 		    this.template('./app/scripts/lib/_default.js', './app/scripts/lib/' + this.sluggedAppname + '.js',
-		      	{ camelCasedAppname: this.camelCasedAppname }
+		      	this.allNames
 		    );
 	  	}
 	},

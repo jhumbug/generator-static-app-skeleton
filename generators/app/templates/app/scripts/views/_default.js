@@ -7,7 +7,7 @@ var key = require('keymaster');
 $.<%= camelCasedAppname %> = require('../lib/<%= sluggedAppname %>');
 
 module.exports = Backbone.View.extend({
-	el: "#<%= camelCasedAppname %>",
+	el: "#<%= sluggedAppname %>",
     
 	template: require('../templates/<%= sluggedAppname %>'),
 
