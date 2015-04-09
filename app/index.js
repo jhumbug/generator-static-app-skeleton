@@ -207,7 +207,7 @@ module.exports = generators.Base.extend({
   
 	end: {
 		bye: function () {
-			this.log('You\'ve got an app!')
+			this.log('You\'ve got an app!  Run `gulp` to start it up.')
 		}
 	}
 
