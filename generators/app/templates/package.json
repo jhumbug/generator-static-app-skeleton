@@ -1,13 +1,13 @@
 {
-  "name": "static-app-skeleton",
+  "name": "<%= sluggedAppname %>",
   "version": "0.0.1",
-  "description": "Static App Skeleton with gulp + browserify + less + backbone + bootstrap",
+  "description": "This is the <%= humanAppname %>",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:jhumbug/static-app-skeleton.git"
+    "url": "git@github.com:your-name-here/<%= sluggedAppname %>.git"
   },
-  "author": "Justin Gardner",
+  "author": "Your Name Here",
   "license": "ISC",
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js"
