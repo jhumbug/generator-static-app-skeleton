@@ -138,8 +138,8 @@ module.exports = generators.Base.extend({
 	writing: {
 	  	copy: function () {
 			this.template('./bower.json', './bower.json');
-			this.template('./.bowerrc', './.bowerrc');
-			this.template('./.gitignore', './.gitignore');
+			this.template('./_.bowerrc', './.bowerrc');
+			this.template('./_.gitignore', './.gitignore');
 			this.template('./package.json', './package.json',
 		      	this.allNames
 		    );
