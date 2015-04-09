@@ -82,21 +82,21 @@ if (ftpInfo) {
         deploy: {
             src: dest + '/**',
             dev: {
-                host: ftpConfig.dev.host,
-                user: ftpConfig.dev.username,
-                pass: ftpConfig.dev.password,
+                host: ftpInfo.dev.host,
+                user: ftpInfo.dev.username,
+                pass: ftpInfo.dev.password,
                 remotePath: '/dev/site'
             },
             staging: {
-                host: ftpConfig.staging.host,
-                user: ftpConfig.staging.username,
-                key: ftpConfig.staging.keyLocation,
+                host: ftpInfo.staging.host,
+                user: ftpInfo.staging.username,
+                key: ftpInfo.staging.keyLocation,
                 remotePath: '/dev/site'
             },
             production: {
-                host: ftpConfig.production.host,
-                user: ftpConfig.production.username,
-                key: ftpConfig.production.keyLocation,
+                host: ftpInfo.production.host,
+                user: ftpInfo.production.username,
+                key: ftpInfo.production.keyLocation,
                 remotePath: '/dev/site'
             }
         }
