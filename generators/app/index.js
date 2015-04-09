@@ -60,31 +60,31 @@ module.exports = generators.Base.extend({
 						name    : 'name',
 						message : 'Your project name',
 						default : 'Super Terrific Happy App' // Default to current folder name
-				    },
-				    {
-				        type    : 'input',
-				        name    : 'devNpm',
-				        message : 'Enter a comma separated list of extra dev npm modules to install',
-				        default : '' // Default to none
-				    },
-				    {
-				        type    : 'input',
-				        name    : 'prodNpm',
-				        message : 'Enter a comma separated list of extra production npm modules to install',
-				        default : '' // Default to none
-				    },
-				    {
-				        type    : 'input',
-				        name    : 'devBower',
-				        message : 'Enter a comma separated list of extra dev bower components to install',
-				        default : '' // Default to none
-				    },
-				    {
-				        type    : 'input',
-				        name    : 'prodBower',
-				        message : 'Enter a comma separated list of extra production bower components to install',
-				        default : '' // Default to none
-				    }
+					} //,
+				    // {
+				    //     type    : 'input',
+				    //     name    : 'devNpm',
+				    //     message : 'Enter a comma separated list of extra dev npm modules to install',
+				    //     default : '' // Default to none
+				    // },
+				    // {
+				    //     type    : 'input',
+				    //     name    : 'prodNpm',
+				    //     message : 'Enter a comma separated list of extra production npm modules to install',
+				    //     default : '' // Default to none
+				    // },
+				    // {
+				    //     type    : 'input',
+				    //     name    : 'devBower',
+				    //     message : 'Enter a comma separated list of extra dev bower components to install',
+				    //     default : '' // Default to none
+				    // },
+				    // {
+				    //     type    : 'input',
+				    //     name    : 'prodBower',
+				    //     message : 'Enter a comma separated list of extra production bower components to install',
+				    //     default : '' // Default to none
+				    // }
 
 			    ];
 
@@ -93,14 +93,14 @@ module.exports = generators.Base.extend({
 			    	this.appname = answers.name;
 			    	this.log('You\'ve named your app: ' + answers.name);
 					//strip whitespace and break into array
-					this.extraNpmModules.dev = answers.devNpm.replace(/ /g,'').split(',');
-					this.extraNpmModules.production = answers.prodNpm.replace(/ /g,'').split(',');
-					this.log(this.extraNpmModules);
+					// this.extraNpmModules.dev = answers.devNpm.replace(/ /g,'').split(',');
+					// this.extraNpmModules.production = answers.prodNpm.replace(/ /g,'').split(',');
+					// this.log(this.extraNpmModules);
 
-					//strip whitespace and break into array
-			        this.extraBowerComponents.dev = answers.devBower.replace(/ /g,'').split(',');
-			        this.extraBowerComponents.production = answers.prodBower.replace(/ /g,'').split(',');
-			        this.log(this.extraBowerComponents);
+					// //strip whitespace and break into array
+					// this.extraBowerComponents.dev = answers.devBower.replace(/ /g,'').split(',');
+					// this.extraBowerComponents.production = answers.prodBower.replace(/ /g,'').split(',');
+					// this.log(this.extraBowerComponents);
 
 					done();
 			    }.bind(this));

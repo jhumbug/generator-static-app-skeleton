@@ -6,7 +6,7 @@ var handleErrors = require('../util/handleErrors');
 var config       = require('../config').less;
 var autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('less', function () {
+gulp.task('less', ['clean'], function () {
   return gulp.src(config.src)
     .pipe(sourcemaps.init())
     .pipe(less(config.settings))

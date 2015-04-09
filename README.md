@@ -22,7 +22,7 @@ Create your project directory and cd into it: `mkdir test2 && cd test2`
 
 And run `yo static-app-skeleton`. 
 
-You'll get a few prompts about customizing your app -- name, libraries to download, etc.
+You'll get a few prompts about customizing your app.
 
 ## Using Your App
 There's a little bit of setup left to do before you can do everything you might need to.
@@ -37,10 +37,12 @@ Run `gulp` to compile all the less, js and copies the images, fonts, and markup 
 
 #### More Gulp Commands
 
+`gulp -c` or `gulp --clean=true` will first delete the previous build folder.
+
 `gulp watch` starts watching your project for changes so it can compile and show your changes in a browser right away.
 
-`gulp dev` compiles everything and deploys to your dev site defined in .ftppass
+`gulp dev [-c]` compiles everything and deploys to your dev site defined in .ftppass
 
-`gulp staging` compiles everything and deploys to your staging site defined in .ftppass
+`gulp staging [-c]` compiles everything and deploys to your staging site defined in .ftppass
 
-`gulp production`  compiles everything and deploys to your production site defined in .ftppass
+`gulp production [-c]`  compiles everything and deploys to your production site defined in .ftppass
