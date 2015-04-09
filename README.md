@@ -1,4 +1,4 @@
-# Yeoman Generator for a Static App Skeleton
+# Yeoman Generator for a Backbone + LESS + gulp + Browserify Static App Skeleton
 
 ## Overview
 This yeoman generator provides you with a static app skeleton for creating and deploying a one page static html/js/css app.  It uses a bunch web technologies to help workflow, organization and rapid development.

@@ -1,6 +1,6 @@
 {
   "name": "generator-static-app-skeleton",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Yeoman generator for a static app skeleton with gulp + browserify + less + backbone + bootstrap + deployment (beta)",
   "main": "app.js",
   "files": [
