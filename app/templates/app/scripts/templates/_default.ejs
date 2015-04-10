@@ -1,7 +1,30 @@
 
 <div id="wrapper" class="container">
 	<div class="explantion">
-		<p><span class="bigger">Whew.</span> Everything seems to be working. Your app is named <strong><%= humanAppname %>.</strong></p>
+		<p><span class="bigger">Whew.</span> Everything seems to be working. This is the start of your app: <strong><%= humanAppname %>.</strong></p>
+
+		<p>Edit your <strong>/gulp/.ftppass file to deploy your app.</strong></p>
+
+		<p>Your app structure:</p>
+
+		<pre>app/ <span class="comments">//this is set up like a typical model/view/controller (mvc) app. </span>
+  fonts/ 
+  images/ 
+  scripts/ 
+    lib/  <span class="comments">//use this to store libraries that aren't in npm or bower (inorite). </span>
+    models/ <span class="comments">//these are your backbone template.  the 'm' in mvc. </span>
+    templates/ <span class="comments">//these are your backbone template.  the 'v' in mvc. </span>
+    views/ <span class="comments">//these are your backbone views.  the 'c' in mvc--just to be confusing. </span>
+    router.js <span class="comments">//edit this to app more "pages" to your single "page" app. </span>
+    ...
+  styles/
+    app.less <span class="comments">//includes all your other .less and .css files. take a look to see what's being used now. </span>
+    ...
+gulp/
+  tasks/ <span class="comments">//your gulp tasks are separated out into individual files here </span>
+  config.js <span class="comments">//this holds all your gulp related variables </span>
+  ...
+		</pre>
 	</div>
 
 	<div class="exclamation">
