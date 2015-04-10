@@ -58,9 +58,15 @@ module.exports = generators.Base.extend({
 			    	{
 						type    : 'input',
 						name    : 'name',
-						message : 'Your project name',
+						message : 'What\'s your project\'s name?',
 						default : 'Super Terrific Happy App' // Default to current folder name
 					} //,
+					// {
+					// 	type    : 'input',
+					// 	name    : 'ftp',
+					// 	message : 'Want FTP deployment? ',
+					// 	default : false // Default to current folder name
+					// } //,
 				    // {
 				    //     type    : 'input',
 				    //     name    : 'devNpm',
@@ -92,6 +98,10 @@ module.exports = generators.Base.extend({
 			    this.prompt(prompts, function (answers) {
 			    	this.appname = answers.name;
 			    	this.log('You\'ve named your app: ' + answers.name);
+
+			    	this.configureFTP = answers.ftp;
+			    	if (this.configureFTP) this.log('Creating .ftppass file');
+
 					//strip whitespace and break into array
 					// this.extraNpmModules.dev = answers.devNpm.replace(/ /g,'').split(',');
 					// this.extraNpmModules.production = answers.prodNpm.replace(/ /g,'').split(',');
@@ -140,9 +150,7 @@ module.exports = generators.Base.extend({
 			this.template('./bower.json', './bower.json');
 			this.template('./_.bowerrc', './.bowerrc');
 			this.template('./_.gitignore', './.gitignore');
-			this.template('./package.json', './package.json',
-		      	this.allNames
-		    );
+			this.template('./package.json', './package.json', this.allNames);
 			this.template('./gulpfile.js', './gulpfile.js');
 			this.template('./README.md', './README.md');
 	  	},
@@ -151,42 +159,34 @@ module.exports = generators.Base.extend({
 
 	  		//gulp
 			this.directory('./gulp', './gulp');
-	  		this.template('./gulp/config.js', './gulp/config.js',
-		      	this.allNames
-		    );
+	  		this.template('./gulp/config.js', './gulp/config.js', this.allNames);
+		    // !!! Use this to set ftppass info from prompts !!!
+		    // if (this.configureFTP) {
+		    // 	this.template('./gulp/config.js', './gulp/config.js',
+			   //    	this.ftpInfo
+			   //  );
+		    // }
+	  		this.template('./gulp/.ftppass.sample', './gulp/.ftppass');
 
 	  		//markup
-	  		this.template('./app/index.html', './app/index.html',
-		      	this.allNames
-		    );
+	  		this.template('./app/index.html', './app/index.html', this.allNames);
 
 	  		//styles
 		    this.template('./app/styles/_default.less', './app/styles/' + this.sluggedAppname + '.less');
-		    this.template('./app/styles/app.less', './app/styles/app.less',
-		      	this.allNames
-		    );
+		    this.template('./app/styles/app.less', './app/styles/app.less', this.allNames);
 		    this.copy('./app/styles/vars.less', './app/styles/vars.less');
 		    this.copy('./app/styles/mixins.less', './app/styles/mixins.less');
 
 		    //scripts
-		    this.template('./app/scripts/router.js', './app/scripts/router.js',
-		      	this.allNames
-		    );
+		    this.template('./app/scripts/router.js', './app/scripts/router.js', this.allNames);
 		    this.copy('./app/scripts/app.js', './app/scripts/app.js');
-		    this.template('./app/scripts/views/content.js', './app/scripts/views/content.js',
-		      	this.allNames
-		    );
+		    this.template('./app/scripts/views/content.js', './app/scripts/views/content.js', this.allNames);
 		    this.template('./app/scripts/views/_default.js', './app/scripts/views/' + this.sluggedAppname + '.js');
-		    this.template('./app/scripts/templates/_default.ejs', './app/scripts/templates/' + this.sluggedAppname + '.ejs',
-		      	this.allNames
-		    );
-		    this.template('./app/scripts/templates/content.ejs', './app/scripts/templates/content.ejs',
-		      	this.allNames
-		    );
+		    this.template('./app/scripts/templates/_default.ejs', './app/scripts/templates/' + this.sluggedAppname + '.ejs', this.allNames);
+		    this.template('./app/scripts/templates/content.ejs', './app/scripts/templates/content.ejs', this.allNames );
 		    this.template('./app/scripts/models/_default.js', './app/scripts/models/' + this.sluggedAppname + '.js');
-		    this.template('./app/scripts/lib/_default.js', './app/scripts/lib/' + this.sluggedAppname + '.js',
-		      	this.allNames
-		    );
+		    this.template('./app/scripts/collections/_default.js', './app/scripts/collections/' + this.sluggedAppname + '.js');
+		    this.template('./app/scripts/lib/_default.js', './app/scripts/lib/' + this.sluggedAppname + '.js', this.allNames );
 	  	}
 	},
 
