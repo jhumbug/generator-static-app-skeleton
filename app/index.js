@@ -196,13 +196,8 @@ module.exports = generators.Base.extend({
 			this.installDependencies(); //npm and bower
 
 			this.config.save(); //save yo-rc.json
+	   		// this.npmInstall(['lodash'], { 'saveDev': true });
 		}
-
-
-
-	  	// installingLodash: function() {
-	   //  	this.npmInstall(['lodash'], { 'saveDev': true });
-	  	// }	
 	},
   
 	end: {
@@ -212,8 +207,3 @@ module.exports = generators.Base.extend({
 	}
 
 });
-
-
-// var generators = require('yeoman-generator');
-
-// module.exports = generators.NamedBase.extend();
