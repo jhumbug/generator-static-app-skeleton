@@ -18,7 +18,7 @@ Once you have that you can install this generator. `npm install -g generator-sta
 One major thing this repo uses is gulp. You'll need to set that up globally. `npm install -g gulp`
 
 ## Generating Your App
-Create your project directory and cd into it: `mkdir test2 && cd test2`
+Create your project directory and cd into it: `mkdir {app-dirname} && cd {app-dirname}`
 
 And run `yo static-app-skeleton`. 
 

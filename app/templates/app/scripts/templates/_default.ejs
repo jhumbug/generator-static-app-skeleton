@@ -1,34 +1,34 @@
 
 <div id="wrapper" class="container">
-	<div class="explantion">
-		<p><span class="bigger">Whew.</span> Everything seems to be working. This is the start of your app: <strong><%= humanAppname %>.</strong></p>
+    <div class="exclamation">
+        <h1><%= '<%=' %> <%= 'title' %> <%= '%' %><%= '>' %></h1>
+        <h6>It worked</h6>
+    </div>
 
-		<p>Edit your <strong>/gulp/.ftppass</strong> file to deploy your app.</p>
+    <div class="explantion">
+        <h2><%= humanAppname %></p>
 
-		<p>Your app structure:</p>
+        <h3>Things to know about your app's structure:</h3>
 
-		<pre>app/ <span class="comments">//this is set up like a typical model/view/controller (mvc) app. </span>
-  fonts/ 
-  images/ 
-  scripts/ 
-    lib/  <span class="comments">//use this to store libraries that aren't in npm or bower (inorite). </span>
-    models/ <span class="comments">//these are your backbone template.  the 'm' in mvc. </span>
-    templates/ <span class="comments">//these are your backbone template.  the 'v' in mvc. </span>
-    views/ <span class="comments">//these are your backbone views.  the 'c' in mvc--just to be confusing. </span>
-    router.js <span class="comments">//edit this to add more "pages" to your single "page" app. </span>
-    ...
-  styles/
-    app.less <span class="comments">//includes all your other .less and .css files. take a look to see what's being used now. </span>
-    ...
-gulp/
-  tasks/ <span class="comments">//your gulp tasks are separated out into individual files here </span>
-  config.js <span class="comments">//this holds all your gulp related variables </span>
-  ...
-		</pre>
-	</div>
-
-	<div class="exclamation">
-		<h1><%= '<%=' %> <%= 'title' %> <%= '%' %><%= '>' %></h1>
-		<h6>It worked</h6>
-	</div>
+<pre>.
+├── app/ <span class="comments">// this is set up like a typical model/view/controller (mvc) app. </span>
+|    ├── fonts/ 
+|    ├── images/
+|    ├── styles/
+|    └── scripts/
+|       ├── lib/         <span class="comments">// use this to store libraries that </span>
+|       |                <span class="comments">   aren't in npm or bower (inorite).</span>
+|       ├── models/      <span class="comments">// these next 4 directories are your standard</span>
+|       ├── collections/ <span class="comments">   backbonejs components. </span>         
+|       ├── templates/  
+|       ├── views/
+|       └── router.js    <span class="comments">// edit this to add more "pages"</span>
+|                        <span class="comments">   to your single "page" app.</span>
+├── gulp/          <span class="comments">// has your tasks and config broken out in files. </span>
+├── {appname}.json <span class="comments">// contains your app configurations. </span>
+└── app.js         <span class="comments">// initializes your app. </span>
+    </pre>
+  </div>
 </div>
+
+

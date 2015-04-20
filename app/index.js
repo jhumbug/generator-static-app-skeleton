@@ -1,7 +1,7 @@
+'use strict';
+
 var generators = require('yeoman-generator');
-var slugify = require("underscore.string/slugify");
-var humanize = require("underscore.string/humanize");
-var camelize = require("underscore.string/camelize");
+var _ = require('lodash');
 
 module.exports = generators.Base.extend({
 	// priorityName: {
@@ -31,7 +31,7 @@ module.exports = generators.Base.extend({
 		// Next, add your custom code
 		// this.option('coffee'); // This method adds support for a `--coffee` flag
 		// And you can then access it later on this way; e.g.
-		// this.scriptSuffix = (this.options.coffee ? ".coffee": ".js");
+		// this.scriptSuffix = (this.options.coffee ? '.coffee': '.js');
 
 		// This makes `appname` a required argument.
 		// this.argument('appname', { type: String, required: true });
@@ -51,7 +51,7 @@ module.exports = generators.Base.extend({
 
 			};
 
-			this.promptInstall = function (options) {
+			this.promptInstall = function () {
 			    var done = this.async();
 
 			    var prompts = [
@@ -116,17 +116,19 @@ module.exports = generators.Base.extend({
 			    }.bind(this));
 			};
 
-		  	this.changeAppName = function (name) {
+		  	this.configureAppName = function () {
 		  		this.typedAppName = this.appname; // This has to work App
-				this.humanAppname = humanize(this.appname); // This has to work app
-				this.sluggedAppname = slugify(this.appname); // this-has-to-work-app
-				this.camelCasedAppname = camelize(this.appname.toLowerCase()); //thisHasToWorkApp
+				this.humanAppname = _.startCase(this.appname); // This has to work app
+				this.sluggedAppname = _.kebabCase(this.appname); // this-has-to-work-app
+				this.camelCasedAppname = _.camelCase(this.appname.toLowerCase()); //thisHasToWorkApp
+				this.upperCasedAppname = _.kebabCase(this.appname).toUpperCase(); //THIS-HAS-TO-WORK-APP
 
 				this.allNames = {
 					typedAppName: this.typedAppName,
 					humanAppname: this.humanAppname,
 					sluggedAppname: this.sluggedAppname,
-					camelCasedAppname: this.camelCasedAppname
+					camelCasedAppname: this.camelCasedAppname,
+					upperCasedAppname: this.upperCasedAppname
 				};
 		  	};
 	  	}
@@ -141,7 +143,7 @@ module.exports = generators.Base.extend({
 
 	configuring: {
 		setInitialState: function () {
-			this.changeAppName(this.appname);
+			this.configureAppName();
 		}
 	},
 
@@ -175,6 +177,7 @@ module.exports = generators.Base.extend({
 		    this.template('./app/styles/_default.less', './app/styles/' + this.sluggedAppname + '.less');
 		    this.template('./app/styles/app.less', './app/styles/app.less', this.allNames);
 		    this.copy('./app/styles/vars.less', './app/styles/vars.less');
+		    this.copy('./app/styles/common.less', './app/styles/common.less');
 		    this.copy('./app/styles/mixins.less', './app/styles/mixins.less');
 
 		    //scripts
@@ -202,7 +205,7 @@ module.exports = generators.Base.extend({
   
 	end: {
 		bye: function () {
-			this.log('You\'ve got an app!  Run `gulp` to start it up.')
+			this.log('You\'ve got an app!  Run `gulp` to start it up.');
 		}
 	}
 

@@ -25,10 +25,9 @@
   },
   "author": "Justin Gardner",
   "license": "ISC",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "underscore.string": "^3.0.3",
+    "lodash": "^3.7.0",
     "yeoman-generator": "^0.18.10"
   }
 }
