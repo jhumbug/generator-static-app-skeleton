@@ -165,8 +165,8 @@ module.exports = generators.Base.extend({
 		    // 	this.template('./gulp/config.js', './gulp/config.js',
 			   //    	this.ftpInfo
 			   //  );
+	  			// this.template('./gulp/.ftppass.sample', './gulp/.ftppass');
 		    // }
-	  		this.template('./gulp/.ftppass.sample', './gulp/.ftppass');
 
 	  		//markup
 	  		this.template('./app/index.html', './app/index.html', this.allNames);
