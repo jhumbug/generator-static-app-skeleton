@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp    = require('gulp');
 var config  = require('../config').minify;
 var size    = require('gulp-filesize');

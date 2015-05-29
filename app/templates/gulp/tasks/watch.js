@@ -1,3 +1,5 @@
+'use strict';
+
 /* Notes:
    - gulp/tasks/browserify.js handles js recompiling with watchify
    - gulp/tasks/browserSync.js watches and reloads compiled files
@@ -5,9 +7,8 @@
 
 var gulp     = require('gulp');
 var config   = require('../config');
-var watchify = require('./browserify')
 
-gulp.task('watch', ['watchify', 'browserSync', 'clean'], function(callback) {
+gulp.task('watch', [ 'watchify', 'browserSync', 'clean' ], function() {
   gulp.watch(config.less.watchSrc, ['less']);
   gulp.watch(config.images.src, ['images']);
   gulp.watch(config.markup.src, ['markup']);

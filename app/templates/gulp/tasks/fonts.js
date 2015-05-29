@@ -1,3 +1,5 @@
+'use strict';
+
 var changed    = require('gulp-changed');
 var gulp       = require('gulp');
 var config     = require('../config').fonts;

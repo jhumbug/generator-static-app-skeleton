@@ -1,3 +1,5 @@
+'use strict';
+
 var dest = './.build';
 var app = './app';
 var nodeModules = './node_modules';
@@ -24,9 +26,9 @@ var config = {
         port: 8080
     },
     less: {
-        src: app + "/styles/app.less",
-        watchSrc: app + "/styles/**/*.less",
-        dest: dest + "/css/",
+        src: app + '/styles/app.less',
+        watchSrc: app + '/styles/**/*.less',
+        dest: dest + '/css/',
         settings: {
             paths: [
                 app + '/styles/',
@@ -36,18 +38,18 @@ var config = {
         }
     },
     images: {
-        src: app + "/images/**",
-        dest: dest + "/images"
+        src: app + '/images/**',
+        dest: dest + '/images'
     },
     fonts: {
         src: [
-            app + "/fonts/**",
+            app + '/fonts/**',
             nodeModules + '/font-awesome/fonts/**' //add paths to other libraries if you add them
         ],
-        dest: dest + "/fonts"
+        dest: dest + '/fonts'
     },
     markup: {
-        src: app + "/index.html",
+        src: app + '/index.html',
         dest: dest
     },
     browserify: {

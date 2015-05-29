@@ -1,6 +1,8 @@
+'use strict';
+
 var gulp         = require('gulp');
 var browserSync  = require('browser-sync');
-var less 		 = require('gulp-less')
+var less 		 = require('gulp-less');
 var sourcemaps   = require('gulp-sourcemaps');
 var handleErrors = require('../util/handleErrors');
 var config       = require('../config').less;
@@ -12,7 +14,7 @@ gulp.task('less', ['clean'], function () {
     .pipe(less(config.settings))
     .on('error', handleErrors)
     .pipe(sourcemaps.write({
-    	sourceRoot: function(file) { // set this when use less that's outside of the app directory (in node_modules, etc)
+    	sourceRoot: function() { // set this when use less that's outside of the app directory (in node_modules, etc)
 	        return './';
 	    }
 	}))

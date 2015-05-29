@@ -1,5 +1,7 @@
+'use strict';
+
 var Backbone = require('backbone');
-var $ = require('jquery');
+require('jquery');
 Backbone.$ = $;
 
 var _ = require('lodash');
@@ -9,7 +11,7 @@ var key = require('keymaster');
 var <%= camelCasedAppname %>Router = require('../router');
 
 module.exports = Backbone.View.extend({
-	el: "#content",
+	el: '#content',
 
 	template: require('../templates/content'),
 

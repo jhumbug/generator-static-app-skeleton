@@ -1,5 +1,7 @@
+'use strict';
+
 var Backbone = require('backbone');
-var $ = require('jquery');
+require('jquery');
 Backbone.$ = $;
 
 var <%= camelCasedAppname %>View = require('./views/<%= sluggedAppname %>');

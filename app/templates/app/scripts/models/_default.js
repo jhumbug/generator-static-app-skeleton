@@ -1,3 +1,5 @@
+'use strict';
+
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -11,10 +13,11 @@ module.exports = Backbone.Model.extend({
 
     url: '',
 
-    validate: function(attrs, options) {
-    },
+    // validate: function(attrs, options) {
+    
+    // },
 
-    parse: function(response, options)  {
+    parse: function(response)  {
         return response;
     }
 });

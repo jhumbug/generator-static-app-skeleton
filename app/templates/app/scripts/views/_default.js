@@ -1,5 +1,7 @@
+'use strict';
+
 var Backbone = require('backbone');
-var $ = require('jquery');
+require('jquery');
 
 var _ = require('lodash');
 var key = require('keymaster');
@@ -7,13 +9,11 @@ var key = require('keymaster');
 $.<%= camelCasedAppname %> = require('../lib/<%= sluggedAppname %>');
 
 module.exports = Backbone.View.extend({
-	el: "#<%= sluggedAppname %>",
+	el: '#<%= sluggedAppname %>',
     
 	template: require('../templates/<%= sluggedAppname %>'),
 
     initialize: function() {
-        var self = this;
-
         this.listenTo(this.model, 'change:<%= sluggedAppname %>', this.render); 
 
         _.bindAll(this, '<%= camelCasedAppname %>');

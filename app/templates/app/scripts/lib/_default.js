@@ -1,4 +1,6 @@
-var $ = require('jquery');
+'use strict';
+
+require('jquery');
 
 $.fn.<%= camelCasedAppname %> = function () {
     

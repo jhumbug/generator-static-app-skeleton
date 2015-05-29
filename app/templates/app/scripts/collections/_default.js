@@ -1,3 +1,5 @@
+'use strict';
+
 var Backbone = require('backbone');
 
 var <%= camelCasedAppname %>Model = require('./models/<%= sluggedAppname %>');
@@ -8,12 +10,12 @@ module.exports = Backbone.Collection.extend({
     url: '',
 
     initialize: function() {
-        this.on('reset', function (col) {
+        // this.on('reset', function (collection) {
            
-        });
+        // });
     },
 
-    parse: function(response, options)  {
+    parse: function(response)  {
         return response;
     }
 });
