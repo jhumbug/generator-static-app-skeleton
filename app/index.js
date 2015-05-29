@@ -152,6 +152,7 @@ module.exports = generators.Base.extend({
 			this.template('./bower.json', './bower.json');
 			this.template('./_.bowerrc', './.bowerrc');
 			this.template('./_.gitignore', './.gitignore');
+			this.template('./_.jshintrc', './.jshintrc');
 			this.template('./package.json', './package.json', this.allNames);
 			this.template('./gulpfile.js', './gulpfile.js');
 			this.template('./README.md', './README.md');
