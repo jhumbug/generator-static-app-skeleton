@@ -11,7 +11,7 @@ module.exports = Backbone.Model.extend({
         
     },
 
-    url: '',
+    urlRoot: '',
 
     // validate: function(attrs, options) {
     
